@@ -1,0 +1,13 @@
+version: 0.1
+phases:
+  install:
+    commands:
+      - echo Entered the install phase...
+      - apt-get update
+      - apt-get install -y curl
+      - curl -s https://raw.githubusercontent.com/aws-quickstart/taskcat/master/installer/pip/pip3-install-master| python -E
+  build:
+    commands:
+      - echo Entering the build phase...
+      - echo Running taskcat
+      - taskcat -c $CODEBUILD_SRC_DIR/avx-awsmp-nextgentransithub/ci/config.yml
